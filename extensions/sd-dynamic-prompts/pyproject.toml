@@ -1,0 +1,48 @@
+[project]
+dependencies = [
+    "send2trash~=1.8",
+    "dynamicprompts[attentiongrabber,magicprompt]~=0.29.0",
+]
+
+[tool.pytest.ini_options]
+minversion = "7.0"
+pythonpath = [
+    ".",
+]
+addopts = "--ignore=collections"
+markers = [
+	"slow"
+]
+
+[tool.ruff]
+target-version = "py310"
+select = [
+    "B",
+    "C",
+    "COM",
+    "E",
+    "F",
+    "I",
+    "UP",
+]
+ignore = [
+    "C901", # Complexity
+    "E501", # Line length
+]
+unfixable = [
+    "B007", # Loop control variable not used within the loop body
+]
+
+[tool.coverage.run]
+branch = true
+omit = [
+    "install.py"
+]
+
+[tool.coverage.report]
+exclude_lines = [
+    "pragma: no cover",
+    "raise NotImplementedError",
+    "if TYPE_CHECKING:",
+    "if __name__ == .__main__.:",
+]
